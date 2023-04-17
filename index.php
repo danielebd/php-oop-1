@@ -1,15 +1,5 @@
 <?php
-require_once __DIR__ . '/Models/Movie.php';
-require_once __DIR__ . '/Models/Type.php';
-
-$dune = new Movie('Dune', array(new Types('fantasy'), new Types('drama')), 120, 'Denis Villeneuve');
-$johnwick = new Movie('John Wick', array(new Types('action'), new Types('drama')), 90, 'Chad Stahelski');
-
-var_dump($dune);
-var_dump($dune->get_types_as_string())
-
-
-
+require_once __DIR__ . '/Function.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,14 +14,15 @@ var_dump($dune->get_types_as_string())
 
 <body>
     <h1>Movies</h1>
-    <h2><?php echo $dune->get_title() ?></h2>
-    <div>Genere:
-        <?php echo $dune->get_types_as_string()  ?>
-    </div>
-    <h2><?php echo $johnwick->get_title() ?></h2>
-    <div>Genere:
-        <?php echo $johnwick->get_types_as_string()  ?>
-    </div>
+    <?php foreach ($results as $result) : ?>
+        
+        <h2><?php echo $result->get_title() ?></h2>
+        <div><?php echo "Regista: {$result->get_director()}" ?></div>
+        <div><?php echo "Durata: {$result->get_duration()}min" ?></div>
+        <div>Genere:
+            <?php echo $result->get_types_as_string()?>
+        </div>
+    <?php endforeach ?>
 
 </body>
 

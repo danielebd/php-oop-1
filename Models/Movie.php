@@ -13,12 +13,18 @@ class Movie {
     }
 
     public function get_title(){
-        return strval($this->title);
+        return $this->title;
+    }
+    public function get_director(){
+        return $this->director;
+    }
+    public function get_duration(){
+        return $this->duration;
     }
     public function get_types_as_string(){
         $array_type = [];
         foreach($this->type as $type){
-            array_push($array_type, $type->type);
+            array_push($array_type, $type);
         }
         return implode(', ',$array_type);
     }
